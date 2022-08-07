@@ -4,8 +4,9 @@ metadata:
   name: app-deployment
   labels:
     app: app
+
 spec:
-  replicas: 4
+  replicas: 1
   selector:
     matchLabels:
       app: app
@@ -13,6 +14,9 @@ spec:
     metadata:
       labels:
         app: app
+      annotations:
+        prometheus.io/scrape: 'true' 
+        prometheus.io/port: '5000' 
     spec:
       containers:
       - name: app
